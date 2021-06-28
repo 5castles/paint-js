@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName("color");
 const range = document.getElementById("jsRange");
 const paintMode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const clearBtn = document.getElementById("jsClear");
 
 canvas.width = 700;
 canvas.height = 700;
@@ -72,6 +73,10 @@ function handleClickSave(event){
     link.download ="my_paint";  //파일명 정하기
     link.click(); 
 }
+function handleClickClear(){
+    ctx.fillStyle = "white";
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+}
 
 if(canvas){
     canvas.addEventListener("mousemove", onMouseMove);
@@ -93,4 +98,7 @@ if(paintMode){
 
 if(saveBtn){
     saveBtn.addEventListener("click", handleClickSave);
+}
+if(clearBtn){
+    clearBtn.addEventListener("click", handleClickClear);
 }
